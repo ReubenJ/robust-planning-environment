@@ -18,3 +18,8 @@ RUN apt-get update; apt-get install -y \
 ENV PATH="/env:/env/bin:${PATH}"
 
 RUN curl -fsSL https://install.julialang.org | sh -s -- -y
+
+FROM base AS build-cTORS
+WORKDIR /cTORS
+COPY ./robust-planning-project/cTORS /cTORS
+RUN mkdir build && python setup.py install
