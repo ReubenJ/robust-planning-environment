@@ -1,0 +1,3 @@
+[submodule "robust-planning-project"]
+	path = robust-planning-project
+	url = git@github.com:ReubenJ/msc-thesis.git
