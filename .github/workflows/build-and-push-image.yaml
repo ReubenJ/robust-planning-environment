@@ -13,7 +13,8 @@ on:
 jobs:
   docker:
     permissions:
-      packages: write    
+      packages: write
+      contents: write    
     runs-on: ubuntu-latest
     steps:
       -
@@ -21,7 +22,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-          token: ${{ secrets.PRIVATE_REPO_ACCESS }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Docker meta
         id: meta
