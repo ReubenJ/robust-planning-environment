@@ -17,7 +17,7 @@ RUN apt-get update; apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 ENV PATH="/env:/env/bin:${PATH}"
 
-RUN curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.8
+RUN curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.8 -p /env/julia
 
 FROM base AS build-cTORS
 WORKDIR /cTORS
