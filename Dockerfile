@@ -18,7 +18,12 @@ RUN apt-get update; apt-get install -y \
 ENV PATH="/env:/env/bin:${PATH}"
 
 # Need to use the /releasepreview version to get access to the -p flag of the juliaup installer
-RUN curl -fsSL https://install.julialang.org/releasepreview | sh -s -- --default-channel 1.8 --path /env/julia --background-selfupdate=0 --startup-selfupdate=0 --yes
+RUN curl -fsSL https://install.julialang.org/releasepreview | sh -s -- \
+    --default-channel 1.8 --path /env/julia --background-selfupdate=0 --startup-selfupdate=0 --add-to-path=false --yes
+
+# Explicitly add the julia binary to the path rather than relying on the installer to do it
+# so that apptainer can correctly initialize the PATH environment variable
+ENV PATH="/env/julia/bin:${PATH}"
 
 FROM base AS build-cTORS
 WORKDIR /cTORS
