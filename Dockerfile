@@ -17,7 +17,8 @@ RUN apt-get update; apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 ENV PATH="/env:/env/bin:${PATH}"
 
-RUN curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.8 -p /env/julia
+# Need to use the /releasepreview version to get access to the -p flag of the juliaup installer
+RUN curl -fsSL https://install.julialang.org/releasepreview | sh -s -- --default-channel 1.8 --path /env/julia --background-selfupdate=0 --startup-selfupdate=0 --yes
 
 FROM base AS build-cTORS
 WORKDIR /cTORS
