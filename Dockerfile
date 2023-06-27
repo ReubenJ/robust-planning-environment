@@ -1,3 +1,8 @@
+ARG ENVIRONMENT_DIRECTORY=/env
+ARG JULIA_VERSION=1.8
+ARG JULIAUP_INSTALL_PATH=${ENVIRONMENT_DIRECTORY}/juliaup
+ARG JULIA_DEPOT_PATH=/tmp/.julia
+
 FROM condaforge/mambaforge:latest AS conda
 
 COPY ./robust-planning-project/environment.yml ./environment.yml
