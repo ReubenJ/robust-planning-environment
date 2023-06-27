@@ -22,7 +22,7 @@ RUN apt-get update; apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 ENV PATH="/env:/env/bin:${PATH}"
 
-ENV JULIA_DEPOT_PATH="/env/julia/.julia:${JULIA_DEPOT_PATH}"
+ENV JULIA_DEPOT_PATH="/tmp/:/env/julia/.julia:${JULIA_DEPOT_PATH}"
 
 # Need to use the /releasepreview version to get access to the -p flag of the juliaup installer
 RUN curl -fsSL https://install.julialang.org/releasepreview | sh -s -- \
